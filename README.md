@@ -20,7 +20,8 @@ Below is a brief summary of all Python scripts and what they are used for. More 
 3. **singleMatchPull.py** - takes a summoner ID as input and pulls various data points from the last match played by that summoner ID
 4. **groupMatchPull.py** - loops through roughly 2000 Diamond level players and pulls the data of their last match if it was played within the last 24 hours
 5. **infiniteMatchPull.py** - continuously tracks more than 20,000 Diamond level players and records their match information if they are currently playing in a ranked solo queue match. This script will result in the most accurate and up-to-date data.
-6. **getMatchResult.py** - the CSV file created by **infiniteMatchPull** is missing an entry for the **Match Outcome** data point because the match is still being played as the data is pulled. In order to fill in these missing entries, this script opens the CSV file and makes API requests to find the match outcome for each matchID.
+6. **process_data.py** - uses the CSV file created by **infiniteMatchPull** and reduces the attributes for each match down to ratios between the Blue and Red team averages. 
+7. **getMatchResult.py** - the CSV file created by **process_data.py** is missing an entry for the **Match Outcome** data point because the match is still being played as the data is pulled. In order to fill in these missing entries, this script opens the CSV file and makes API requests to find the match outcome for each matchID.
 
 Contributors
 ==========
