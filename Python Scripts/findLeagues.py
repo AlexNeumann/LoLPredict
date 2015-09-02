@@ -1,10 +1,7 @@
-#######################################################################
-##																	 ##
-##						Code Written by: Alex Neumann				 ##
-##							CIS Honors Thesis						 ##
-##				Spring - Fall 2015	Barrett Honors College			 ##
-##																	 ##
-#######################################################################
+# Code Written by: Alex Neumann
+# CIS Honors Thesis
+# Spring - Fall 2015 - Barrett Honors College																 ##
+
 
 import requests
 import json
