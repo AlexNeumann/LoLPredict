@@ -2,7 +2,6 @@
 # CIS Honors Thesis
 # Spring - Fall 2015 - Barrett Honors College																 ##
 
-
 import requests
 import json
 import random
