@@ -1,0 +1,13 @@
+Match #, MATCH_ID, Summoner, Summoner_ID, Champion_id, Champion_KDA, P_Champion_winrate, P_Champion_gamesplayed, 3RecentWinrate, 3RecentKDA, Season Games Played, Season Winrate, Season KDA, Side, Highest_Rank, Outcome, Manual Check, Lane, Role, Champion
+0,1938968727, P1,35043730,122,2.86,57.14,14,33.33,5.6,450,51.33,3.42, Blue, PLATINUM, False, no, TOP, SOLO, Darius
+0,1938968727, P2,45439664,76,2.96,66.67,30,66.67,3.86,302,57.28,2.99, Blue, DIAMOND, False, no, JUNGLE, NONE, Nidalee
+0,1938968727, P3,20360521,117,2.77,44.44,9,100,3.25,837,50.54,2.58, Blue, PLATINUM, False, no, MIDDLE, SOLO, Lulu
+0,1938968727, P4,19178264,201,1.8,0,1,33.33,2.05,552,50.91,2.49, Blue, PLATINUM, False, no, BOTTOM, DUO_SUPPORT, Braum
+0,1938968727, P5,20050028,236,2.67,40.68,59,0,2.18,464,50.65,2.73, Blue, DIAMOND, False, no, BOTTOM, DUO_CARRY, Lucian
+0,1938968727, P6,39900356,150,2.17,52.17,23,0,1.43,649,51.62,2.53, Red, PLATINUM, True, no, TOP, SOLO, Gnar
+0,1938968727, P7,29291646,81,3.52,57.14,84,66.67,3.38,623,53.77,2.41, Red, PLATINUM, True, no, MIDDLE, SOLO, Ezreal
+0,1938968727, P8,20194527,111,2.32,56.25,16,66.67,2.18,595,53.61,2.72, Red, PLATINUM, True, no, BOTTOM, DUO_SUPPORT, Nautilus
+0,1938968727, P9,42901499,67,3.72,61.7,47,66.67,6,266,55.64,3.49, Red, PLATINUM, True, no, BOTTOM, DUO_CARRY, Vayne
+0,1938968727, P10,25276420,245,3.46,66.67,3,66.67,3.42,337,53.12,2.96, Red, DIAMOND, True, no, JUNGLE, NONE, Ekko
+#oldMatches: 1,,,,,,,,,,,,,,,,,,,
+Inactive Players,echa4,,,,,,,,,,,,,,,,,,
