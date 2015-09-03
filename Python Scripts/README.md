@@ -16,6 +16,8 @@ I found a total of: 3 leagues... Size: 203
     - **tier:** set this equal to the skill level you want to find ("DIAMOND","GOLD","SILVER" etc.)
     - **league_num:** set this equal to the total number of leagues you want to find. Each league will have an average of 200 summonerIDs. Default is 40 leagues, which results in roughly 8,000 summoner IDs
 
+***
+
 ###2. singleMatchPull.py
 - **Purpose:** This was the first script I wrote for the project. The main purpose was to learn Python, how to make API requests and how to navigate to the correct attributes within the returned JSON object. This script will pull data for the last game played by a given summoner.
 - **Script:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/singleMatchPull.py)
