@@ -32,4 +32,18 @@ Recent winrate / kda information for player: 0 - 10 collected...
 - **Variables to adjust:** 
     - **myID:** set this to any valid summoner ID for which you want to pull the most recent match. As default it is set to my own summonerID
 
+***
 
+###3. convertEpochTime.py
+- **Purpose:** Very simple script that converts from Epoch time to standard date format. The [match API endpoint](https://developer.riotgames.com/api/methods#!/1027/3483) returns the **matchCreation** date in Epoch format. Early in the data collection process I wanted to focus only on recently played games and this script is used to determine how many days ago a given match was played.
+- **Script:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/singleMatchPull.py)
+- **Output:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/singleMatchPull_output.csv)
+- **Console output:**
+```javascript
+MatchId = 1937318097
+Basic information for player: 0 - 10 collected...
+Stats for player: 0 - 10 collected...
+Recent winrate / kda information for player: 0 - 10 collected...
+```
+- **Variables to adjust:** 
+    - **myID:** set this to any valid summoner ID for which you want to pull the most recent match. As default it is set to my own summonerID
