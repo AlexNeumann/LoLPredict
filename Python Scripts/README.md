@@ -109,3 +109,12 @@ Got to iteration: 4     Status Code: 200
 ```
 - **Variables to adjust:** 
     - **API Key:** set to your own Riot API key
+    - 
+***
+
+###7. process_data.py
+- **Purpose:** After I collect all my data I am left with 10 rows of data per match, since there is 1 row for each player in a match. In order to start analyzing my data I condense each match down to 1 row. This script finds the difference between the team averages for each attribute and records it. 
+- **Script:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/process_data.py)
+- **Output:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/process_data_output.csv)
+- **Variables to adjust:** 
+    - **Input File (r):** change this to match the name of the output file created by the **infiniteMatchPull** script
