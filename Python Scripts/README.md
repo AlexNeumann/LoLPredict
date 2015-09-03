@@ -15,6 +15,7 @@ I found a total of: 3 leagues... Size: 203
     - **nextID:** set this to any valid summoner ID of a player in skill group you want to find
     - **tier:** set this equal to the skill level you want to find ("DIAMOND","GOLD","SILVER" etc.)
     - **league_num:** set this equal to the total number of leagues you want to find. Each league will have an average of 200 summonerIDs. Default is 40 leagues, which results in roughly 8,000 summoner IDs
+    - **API Key:** set to your own Riot API key
 
 ***
 
@@ -31,6 +32,7 @@ Recent winrate / kda information for player: 0 - 10 collected...
 ```
 - **Variables to adjust:** 
     - **myID:** set this to any valid summoner ID for which you want to pull the most recent match. As default it is set to my own summonerID
+    - **API Key:** set to your own Riot API key
 
 ***
 
@@ -46,6 +48,7 @@ This match is too old
 ```
 - **Variables to adjust:** 
     - **s:** set this to equal to the **matchCreation** variable returned by the match API endpoint
+    - **API Key:** set to your own Riot API key
 
 ***
 
@@ -64,4 +67,4 @@ Basic information for player: 0 - 10 collected
 etc..
 ```
 - **Variables to adjust:** 
-    - **s:** set this to equal to the **matchCreation** variable returned by the match API endpoint
+    - **API Key:** set to your own Riot API key
