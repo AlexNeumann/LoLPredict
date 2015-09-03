@@ -109,7 +109,7 @@ Got to iteration: 4     Status Code: 200
 ```
 - **Variables to adjust:** 
     - **API Key:** set to your own Riot API key
-    - 
+
 ***
 
 ###7. process_data.py
