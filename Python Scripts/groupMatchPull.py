@@ -141,8 +141,7 @@ output = open("groupMatchPull_Output.csv","w")
 output.write("Match #, MATCH_ID, Summoner, Summoner_ID, Champion_id, Champion_KDA, P_Champion_winrate, P_Champion_gamesplayed, 3RecentWinrate, 3RecentKDA, Season Games Played, Season Winrate, Season KDA, Side, Highest_Rank, Outcome, Manual Check, Lane, Role, Champion\n")
 
 # loop through player_pool 
-#for a in range(0,len(player_pool)):
-for a in range(0,2):
+for a in range(0,len(player_pool)):
 	try:
 		print("MATCH " + str(a))
 		number = a
