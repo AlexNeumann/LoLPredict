@@ -96,7 +96,7 @@ infiniteMatchPull_Ouput_ScriptC_3.csv
 
 ***
 
-###5. get_match_results.py
+###6. get_match_results.py
 - **Purpose:** The **infiniteMatchPull** script pulls data while the game is still being played. Because of this the **Match Outcome** variable will be left blank since there is no winner yet. This script opens the CSV file created by  **infiniteMatchPull** and makes requests to the [match API endpoint](https://developer.riotgames.com/api/methods#!/1027/3483) and records who actually won the game.
 - **Script:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/get_match_results.py)
 - **Output:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/get_match_results_Output.csv)
