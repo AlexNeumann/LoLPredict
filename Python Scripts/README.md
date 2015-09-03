@@ -12,7 +12,7 @@ I found a total of: 2 leagues... Size: 247
 I found a total of: 3 leagues... Size: 203  
 ```
 - **Variables that can be changed:** 
-    - nextID: set this to any valid summoner ID of a player in skill group you want to find
-    - tier: set this equal to the skill level you want to find ("DIAMOND","GOLD","SILVER" etc.)
+    - **nextID:** set this to any valid summoner ID of a player in skill group you want to find
+    - **tier:** set this equal to the skill level you want to find ("DIAMOND","GOLD","SILVER" etc.)
     
 
