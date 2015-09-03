@@ -41,7 +41,7 @@ Recent winrate / kda information for player: 0 - 10 collected...
 ```javascript
 Game was played on: 2015-05-11
 Today's date: 2015-09-02
-Game was played: 114 days ago...
+Game was played: 114 days ago
 This match is too old
 ```
 - **Variables to adjust:** 
