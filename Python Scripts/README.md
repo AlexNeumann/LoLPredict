@@ -14,5 +14,5 @@ I found a total of: 3 leagues... Size: 203
 - **Variables that can be changed:** 
     - **nextID:** set this to any valid summoner ID of a player in skill group you want to find
     - **tier:** set this equal to the skill level you want to find ("DIAMOND","GOLD","SILVER" etc.)
-    
+    - **league_num:** set this equal to the total number of leagues you want to find. Each league will have an average of 200 summonerIDs. Default is 40 leagues, which results in roughly 8,000 summoner IDs
 
