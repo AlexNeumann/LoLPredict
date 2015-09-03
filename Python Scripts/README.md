@@ -6,9 +6,12 @@ Script Overview
 - Script:[shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/findLeagues.py)
 - Output: [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/findLeagues_Output.csv)
 - Console output:
-    - I found a total of: 1 leagues... Size: 201
-    - I found a total of: 2 leagues... Size: 247
-    - I found a total of: 3 leagues... Size: 203  
 
+
+I found a total of: 1 leagues... Size: 201
+I found a total of: 2 leagues... Size: 247
+I found a total of: 3 leagues... Size: 203  
+
+Test
     
 
