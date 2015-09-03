@@ -18,7 +18,7 @@ I found a total of: 3 leagues... Size: 203
 
 ***
 
-###2. singleMatchPull.py
+###2. singleMatchPull.py (1st Iteration for data collection)
 - **Purpose:** This was the first script I wrote for the project. The main purpose was to learn Python, how to make API requests and how to navigate to the correct attributes within the returned JSON object. This script will pull data for the last game played by a given summoner.
 - **Script:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/singleMatchPull.py)
 - **Output:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/singleMatchPull_output.csv)
@@ -43,6 +43,25 @@ Game was played on: 2015-05-11
 Todays date: 2015-09-02
 Game was played: 114 days ago
 This match is too old
+```
+- **Variables to adjust:** 
+    - **s:** set this to equal to the **matchCreation** variable returned by the match API endpoint
+
+***
+
+###4. groupMatchPull.py (2nd Iteration for data collection)
+- **Purpose:** After I was able to pull the data for 1 match using the **singleMatchPull** script, I needed to expand it to be able to pull hundreds of matches. In order to do so I needed to find more summonerIDs that I can use to loop through and pull their most recent match. At this point I did not have the **findLeagues** script yet (I came up with the idea for that script at a later date), so I just used summonerIDs from friends that were in the same tier and used the [league](https://developer.riotgames.com/api/methods#!/985/3351) endpoint to find roughly 2000 summonerIDs.
+- **Script:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/groupMatchPull.py)
+- **Output:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/groupMatchPull_Output.csv)
+- **Console output:**
+```javascript
+Match 0
+Player Name:
+Player has summoner ID:
+Match ID:
+Game was played 0 days ago
+Basic information for player: 0 - 10 collected
+etc..
 ```
 - **Variables to adjust:** 
     - **s:** set this to equal to the **matchCreation** variable returned by the match API endpoint
