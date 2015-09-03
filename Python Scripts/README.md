@@ -71,7 +71,7 @@ etc..
 
 ***
 
-###4. infiniteMatchPull.py (Most Up-to-date Iteration for data collection)
+###5. infiniteMatchPull.py (Most Up-to-date Iteration for data collection)
 - **Purpose:** This is most up-to-date version of my data collection process. This script makes use of all the Leagues found by the **findLeagues.py** script to track over 20,000 Diamond level players. The biggest difference with this script is that it continuously tracks a large number of players and makes a request to the [current-game](https://developer.riotgames.com/api/methods#!/976) API endpoint to determine if the player is currently playing a ranked solo queue game. If the player is in an active game, then the script records the data for that game. Previously, there was a 1 game lag that caused the returned data to be slightly inaccurate. This is because the data was pulled after the game was played, which means that the players' performance in that game was already added to Riots servers.
 - **Script:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/infiniteMatchPull.py)
 - **Output:** [shortcut](https://github.com/AlexNeumann/LoLPredict/blob/master/Python%20Scripts/infiniteMatchPull_Output.csv)
