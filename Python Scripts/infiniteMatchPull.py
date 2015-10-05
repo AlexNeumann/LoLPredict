@@ -31,7 +31,7 @@ player_pool_id = []
 
 # Loop through the diamond leagues and create a list that holds the names of all players in these leagues (roughly 8000)
 for x in range (0, len(leagueID)):
-	time.sleep(1)
+	#time.sleep(1)
 	# store ID of the player
 	tempID = leagueID[x]
 	validPlayers = requests.get("https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/" + str(tempID) + "?api_key=" + APIkey)
@@ -43,9 +43,8 @@ for x in range (0, len(leagueID)):
 			player_pool_id.append(players[str(tempID)][0]["entries"][j]["playerOrTeamId"])
 		except:
 			print("Finding players in League # " + str(x) + " FAILED.")
-	#print("Finding players in League # " + str(x) + " WORKED.")	
+
 print("Now tracking " + str(len(player_pool_id)) + " players...")
-#print(len(player_pool_id))
 
 player_pool = validPlayerNames
 keepLooping = "true"
@@ -63,7 +62,7 @@ try:
 		time.sleep(5)
 		fileName = fileName + 1
 		with open("infiniteMatchPull_Output" + str(fileName) + ".csv","w") as output:
-			output.write("Match #, MATCH_ID, Summoner, Summoner_ID, Champion_id, Champion, Champion_KDA, P_Champion_winrate, P_Champion_gamesplayed, Season Games Played, Season Winrate, Season KDA, Side, DamageType, Role, rA_kills, rA_assists, rA_deaths, rA_KDA, rA_wins, rA_losses, rA_winrate, rA_gpm, rA_timeToWin, rA_totalDmgToChamp, rA_ccDealt, rA_wardskilled, rA_wardsPlaced, rA_visionWardsBought, rA_minionskilled, rA_neutralKilled, rA_firstBloodAssist, rA_firstBloodKill, rA_firstTowerAssist, rA_firstTowerKill, Match Outcome\n")
+			output.write("Match #, MATCH_ID, Summoner, Summoner_ID, Champion_id, Champion, Champion_KDA, P_Champion_winrate, P_Champion_gamesplayed, Season Games Played, Season Winrate, Season KDA, Side, DamageType, Role, Match Outcome\n")
 			# start for loop to go through all player IDs
 			for b in range(0,len(player_pool_id)):
 				# try-catch statement
@@ -115,26 +114,6 @@ try:
 								championDamageType = []			
 								# role: Assassin, Fighter, Mage... Labels given to champions by Riot.
 								championRole = []
-								rA_kills = []
-								rA_deaths = []
-								rA_assists = []
-								rA_wins = []
-								rA_losses = []
-								rA_wardskilled = []
-								rA_wardsPlaced = []
-								rA_visionWardsBought = []
-								rA_firstBloodAssist = []
-								rA_firstBloodKill = []
-								rA_gpm = []
-								rA_timeToWin = []
-								rA_minionskilled = []
-								rA_totalDmgToChamp = []
-								rA_firstTowerAssist = []
-								rA_firstTowerKill = []								
-								rA_ccDealt = []
-								rA_neutralKilled = []
-								rA_winrate = []
-								rA_KDA = []
 								
 								# find and store basic info about each player
 								for c in range(0,10):
@@ -517,170 +496,7 @@ try:
 									
 									playerChampionKDA.append(champ_kda)	
 									
-									# pull their recent stats on the champion they are playing
-									
-									# first check that they have played at least 1 match on the champion
-									if playerChampionGamesPlayed[d] == 0:
-										# enter a 0 for every stat
-										rA_kills.append(0)
-										rA_deaths.append(0)
-										rA_assists.append(0)
-										rA_KDA.append(0)
-										
-										rA_wins.append(0)
-										rA_losses.append(0)
-										rA_winrate.append(0)
-										
-										rA_wardskilled.append(0)
-										rA_wardsPlaced.append(0)
-										rA_visionWardsBought.append(0)
-										rA_firstBloodAssist.append(0)
-										rA_firstBloodKill.append(0)
-										rA_firstTowerAssist.append(0)
-										rA_firstTowerKill.append(0)
-										
-										rA_gpm.append(0)
-										rA_timeToWin.append(0)
-										rA_minionskilled.append(0)
-										rA_totalDmgToChamp.append(0)
-										rA_ccDealt.append(0)
-										rA_neutralKilled.append(0)
-									else:
-										url = "https://na.api.pvp.net/api/lol/na/v2.2/matchhistory/"
-										parameter1 = "?championIds="
-										parameter2 = "&rankedQueues=RANKED_SOLO_5x5&endIndex=15&api_key="
 
-										mh = requests.get(url + str(playerSummonerID[d]) + parameter1 + str(playerChampionID[d]) + parameter2 + APIkey)
-										mh_data = json.loads(mh.content.decode('utf-8'))
-
-										#print(mh_data["matches"][0]["matchVersion"])
-										#print(len(mh_data["matches"]))
-										
-										# recent stats
-										r_kills = 0
-										r_deaths = 0
-										r_assists = 0
-										r_wins = 0
-										r_wardskilled = 0
-										r_wardsPlaced = 0
-										r_visionWardsBought = 0
-										r_firstBloodAssist = 0
-										r_firstBloodKill = 0
-										r_gpm = 0
-										r_timeToWin = 0
-										r_minionskilled = 0
-										r_totalDmgToChamp = 0
-										r_firstTowerAssist = 0
-										r_firstTowerKill = 0								
-										r_ccDealt = 0
-										r_neutralKilled = 0
-
-										num_matches = 0
-										# number of matches returned by match history api
-										# have to be played in: Season 2015
-										for c in range(0,len(mh_data["matches"])):
-											if mh_data["matches"][c]["season"] == "SEASON2015":
-												num_matches = num_matches + 1			
-										
-										# if num_matches is greater than 0, that means we pulled at least 1 match from the current SEASON2015
-										if num_matches > 0:
-											for y in range(0,len(mh_data["matches"])):
-												if mh_data["matches"][y]["season"] == "SEASON2015":
-													matchDuration = mh_data["matches"][y]["matchDuration"]/60
-													r_kills = r_kills + mh_data["matches"][y]["participants"][0]["stats"]["kills"]
-													r_deaths = r_deaths + mh_data["matches"][y]["participants"][0]["stats"]["deaths"]
-													r_assists = r_assists + mh_data["matches"][y]["participants"][0]["stats"]["assists"]
-													if str(mh_data["matches"][y]["participants"][0]["stats"]["winner"]) == 'True':
-														r_wins = r_wins + 1
-														r_timeToWin = r_timeToWin + matchDuration
-													r_wardskilled = r_wardskilled + mh_data["matches"][y]["participants"][0]["stats"]["wardsKilled"]
-													r_wardsPlaced = r_wardsPlaced + mh_data["matches"][y]["participants"][0]["stats"]["wardsPlaced"]
-													r_visionWardsBought = r_visionWardsBought + mh_data["matches"][y]["participants"][0]["stats"]["visionWardsBoughtInGame"]
-													# if str(mh_data["matches"][y]["participants"][0]["stats"]["firstBloodAssist"]) == 'True':
-														# r_firstBloodAssist = r_firstBloodAssist + 1
-													if str(mh_data["matches"][y]["participants"][0]["stats"]["firstBloodKill"]) == 'True':
-														r_firstBloodKill = r_firstBloodKill + 1
-													r_gpm = r_gpm + (mh_data["matches"][y]["participants"][0]["stats"]["goldEarned"]/matchDuration)
-													r_minionskilled = r_minionskilled + mh_data["matches"][y]["participants"][0]["stats"]["minionsKilled"]
-													r_totalDmgToChamp = r_totalDmgToChamp + mh_data["matches"][y]["participants"][0]["stats"]["totalDamageDealtToChampions"]
-													if str(mh_data["matches"][y]["participants"][0]["stats"]["firstTowerAssist"]) == 'True':
-														r_firstTowerAssist = r_firstTowerAssist + 1
-													if str(mh_data["matches"][y]["participants"][0]["stats"]["firstTowerKill"]) == 'True':
-														r_firstTowerKill = r_firstTowerKill + 1								
-													r_ccDealt = r_ccDealt + mh_data["matches"][y]["participants"][0]["stats"]["totalTimeCrowdControlDealt"]
-													r_neutralKilled = r_neutralKilled + mh_data["matches"][y]["participants"][0]["stats"]["neutralMinionsKilled"]
-																				
-
-											losses = num_matches - r_wins
-											winrate = (r_wins/num_matches)*100
-											if r_wins == 0:
-												averageTimeToWin = 60
-											else:
-												averageTimeToWin = r_timeToWin/r_wins
-											averageGPM = r_gpm/num_matches
-											averageKDA = 0
-											# calculate recent KDA
-											if r_kills == 0 and r_deaths == 0 and r_assists == 0:
-												averageKDA = 0.00
-											elif r_deaths == 0:
-												averageKDA = r_kills + r_assists
-											else:
-												averageKDA = round((r_kills + r_assists)/(r_deaths), 2)
-
-											rA_kills.append(r_kills/num_matches)
-											rA_deaths.append(r_deaths/num_matches)
-											rA_assists.append(r_assists/num_matches)
-											rA_KDA.append(averageKDA)
-											
-											rA_wins.append(r_wins)
-											rA_losses.append(losses)
-											rA_winrate.append(winrate)
-											
-											rA_wardskilled.append(r_wardskilled/num_matches)
-											rA_wardsPlaced.append(r_wardsPlaced/num_matches)
-											rA_visionWardsBought.append(r_visionWardsBought/num_matches)
-											rA_firstBloodAssist.append(0)
-											rA_firstBloodKill.append(r_firstBloodKill/num_matches)
-											rA_firstTowerAssist.append(r_firstTowerAssist/num_matches)
-											rA_firstTowerKill.append(r_firstTowerKill/num_matches)
-											
-											rA_gpm.append(averageGPM)
-											rA_timeToWin.append(averageTimeToWin)
-											rA_minionskilled.append(r_minionskilled/num_matches)
-											rA_totalDmgToChamp.append(r_totalDmgToChamp/num_matches)
-											rA_ccDealt.append(r_ccDealt/num_matches)
-											rA_neutralKilled.append(r_neutralKilled/num_matches)
-										else:
-											# enter a 0 for every stat
-											rA_kills.append(0)
-											rA_deaths.append(0)
-											rA_assists.append(0)
-											rA_KDA.append(0)
-											
-											rA_wins.append(0)
-											rA_losses.append(0)
-											rA_winrate.append(0)
-											
-											rA_wardskilled.append(0)
-											rA_wardsPlaced.append(0)
-											rA_visionWardsBought.append(0)
-											rA_firstBloodAssist.append(0)
-											rA_firstBloodKill.append(0)
-											rA_firstTowerAssist.append(0)
-											rA_firstTowerKill.append(0)
-											
-											rA_gpm.append(0)
-											rA_timeToWin.append(0)
-											rA_minionskilled.append(0)
-											rA_totalDmgToChamp.append(0)
-											rA_ccDealt.append(0)
-											rA_neutralKilled.append(0)
-										
-								
-									past3Winrate = 50
-									past3kda = 50
-									player3RecentWinrate.append(past3Winrate)
-									player3RecentKDA.append(past3kda)
 
 								# write data to file with this format:
 								# MATCH_ID, Summoner, Summoner_ID, Champion_id, Champion_KDA, P_Champion_winrate, P_Champion_gamesplayed, 
@@ -707,26 +523,6 @@ try:
 									+ playerSide[f] + "," 									
 									+ str(championDamageType[f]) + ","
 									+ str(championRole[f]) + ","
-									+ str(rA_kills[f]) + ","
-									+ str(rA_assists[f]) + ","
-									+ str(rA_deaths[f]) + ","
-									+ str(rA_KDA[f]) + ","
-									+ str(rA_wins[f]) + ","
-									+ str(rA_losses[f]) + ","
-									+ str(rA_winrate[f]) + ","
-									+ str(rA_gpm[f]) + ","
-									+ str(rA_timeToWin[f]) + ","
-									+ str(rA_totalDmgToChamp[f]) + ","
-									+ str(rA_ccDealt[f]) + ","
-									+ str(rA_wardskilled[f]) + ","
-									+ str(rA_wardsPlaced[f]) + ","
-									+ str(rA_visionWardsBought[f]) + ","
-									+ str(rA_minionskilled[f]) + ","
-									+ str(rA_neutralKilled[f]) + ","
-									+ str(rA_firstBloodAssist[f]) + ","
-									+ str(rA_firstBloodKill[f]) + ","
-									+ str(rA_firstTowerAssist[f]) + ","
-									+ str(rA_firstTowerKill[f]) + ","
 									+ str(playerMatchOutcome[f]))
 									output.write("\n")
 								print("    Match #" + matchNum + " recorded.")
