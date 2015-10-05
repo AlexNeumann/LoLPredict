@@ -11,17 +11,17 @@ APIkey = 'API_KEY_HERE'
 	
 # create a new CSV file
 output = open("singleMatchPull_output.csv","w")
-output.write("MATCH_ID, Summoner, Summoner_ID, Champion_id, Champion_KDA, P_Champion_winrate, P_Champion_gamesplayed, 3RecentWinrate, 3RecentKDA, Season Games Played, Season Winrate, Season KDA, Side, Highest_Rank, Match_KDA, Outcome\n")
+output.write("MATCH_ID, Summoner, Summoner_ID, Champion_id, Champion_KDA, P_Champion_winrate, P_Champion_gamesplayed, Season Games Played, Season Winrate, Season KDA, Side, Highest_Rank, Match_KDA, Outcome\n")
 
 #summoner name = smiling 		summonerId = 20672928
 myID = 20672928
 
-# pull my own match history for testing
-match_history = requests.get("https://na.api.pvp.net/api/lol/na/v2.2/matchhistory/"+ str(myID) + "?rankedQueues=RANKED_SOLO_5x5&beginIndex=0&endIndex=1&api_key=" + APIkey)
-match_history_data = json.loads(match_history.content.decode('utf-8'))
-
+# pull my own MatchList
+matchList = requests.get("https://na.api.pvp.net/api/lol/na/v2.2/matchlist/by-summoner/" + str(myID) + "?rankedQueues=RANKED_SOLO_5x5&seasons=SEASON2015&beginIndex=0&endIndex=1&api_key=" + APIkey)
+matchList_data = json.loads(matchList.content.decode('utf-8'))
+print(matchList_data)
 # Find the matchId for the most recent game in the match history
-match_id = match_history_data["matches"][0]["matchId"]
+match_id = matchList_data["matches"][0]["matchId"]
 print("MatchId = " + str(match_id))
 
 # Pull the match details with the corresponding matchId
@@ -154,42 +154,7 @@ for i in range (0,10):
 	playerChampionKDA.append(champ_kda)	
 	print("Stats for player: " + str(i) + " collected...")
 	
-	# request recent match history for each player 
-	# used to calculate last 3 game winrate and KDA
-	time.sleep(2)
-	# beginIndex = 1; endIndex = 4; in order to get the 3 games prior to most recent one
-	playerHistory = requests.get("https://na.api.pvp.net/api/lol/na/v2.2/matchhistory/"+ str(playerSummonerID[i]) + "?rankedQueues=RANKED_SOLO_5x5&beginIndex=1&endIndex=4&api_key=" + APIkey)
-	playerHistory_data = json.loads(playerHistory.content.decode('utf-8'))
-
-	past3Kills = 0
-	past3Deaths = 0
-	past3Assists = 0
-	past3Wins = 0
 	
-	for y in range(0,3):
-		if str(playerHistory_data["matches"][y]["participants"][0]["stats"]["winner"]) == 'True':
-			past3Wins = past3Wins + 1
-		print(playerHistory_data["matches"][y]["participants"][0]["stats"]["winner"])
-		print(str(playerHistory_data["matches"][y]["participants"][0]["stats"]["winner"]))
-		past3Kills = past3Kills + int(playerHistory_data["matches"][y]["participants"][0]["stats"]["kills"])
-		past3Deaths = past3Deaths + int(playerHistory_data["matches"][y]["participants"][0]["stats"]["deaths"])
-		past3Assists = past3Assists + int(playerHistory_data["matches"][y]["participants"][0]["stats"]["assists"])
-	
-	past3Winrate = 0
-	past3kda = 0
-	
-	if past3Kills == 0 and past3Deaths == 0 and past3Assists == 0:
-		past3kda = 0.00
-	elif past3Deaths == 0:
-		past3kda = round((past3Kills + past3Assists)/(1), 2)
-	else:
-		past3kda = round((past3Kills + past3Assists)/(past3Deaths), 2)
-	
-	past3Winrate = round((past3Wins/3),4) * 100
-	
-	player3RecentWinrate.append(past3Winrate)
-	player3RecentKDA.append(past3kda)
-	print("Recent winrate / kda information for player: " + str(i) + " collected...")
 
 # write data to file with this format:
 for i in range (0,10):
@@ -200,8 +165,6 @@ for i in range (0,10):
 	+ str(playerChampionKDA[i]) + ", " 
 	+ str(playerChampionWinrate[i]) + ", "
 	+ str(playerChampionGamesPlayed[i]) + ", "
-	+ str(player3RecentWinrate[i]) + ", "
-	+ str(player3RecentKDA[i]) + ", "
 	+ str(playerTotalSeasonGamesPlayed[i]) + ", "
 	+ str(playerTotalSeasonWinrate[i]) + ", "
 	+ str(playerTotalSeasonKDA[i]) + ", "
